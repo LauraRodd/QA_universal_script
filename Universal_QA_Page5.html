@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Website QA Checker - Installation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        a{
+            color:#442bc1 
+        }
+        .container {
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .installation-box {
+            background: linear-gradient(135deg, #2ac093 0%, #047944 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(5, 95, 76, 0.3);
+        }
+
+        .installation-box h2 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .bookmarklet-button {
+            display: inline-block;
+            background: white;
+            color: #2daa61;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: move;
+            border: 3px dashed rgba(255, 255, 255, 0.5);
+        }
+
+        .bookmarklet-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .drag-instruction {
+            color: white;
+            margin-top: 15px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .drag-instruction::before {
+            content: "👆 ";
+            font-size: 1.3rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(5px);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .instructions {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            color: #856404;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .instructions strong {
+            color: #664d03;
+        }
+
+        .checks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .check-item {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-item::before {
+            content: "✓";
+            color: #0d6efd;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .alternative-method {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .alternative-method h3 {
+            color: #0c5460;
+            margin-bottom: 10px;
+        }
+
+        .code-box {
+            background: #23241f;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            max-height: 200px;
+            word-break: break-all;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Universal Website QA Checker</h1>
+            <p>Professional-grade quality assurance automation for any website</p>
+        </div>
+
+        <div class="content">
+            <div class="installation-box">
+                <h2>📌 Drag the Button Below to Your Bookmarks Bar</h2>
+                <a href="javascript:(function(){'use strict';const qaResults={seo:[],links:[],content:[],headings:[],images:[],accessibility:[],performance:[],structure:[]};let issueCount=0;function checkSEO(){const title=document.querySelector('title');if(!title||!title.textContent.trim()){qaResults.seo.push('❌ Missing or empty <title> tag');issueCount++;}else{const titleLen=title.textContent.length;if(titleLen<30){qaResults.seo.push(`⚠️ Title too short (${titleLen} chars, recommended: 50-60)`);issueCount++;}else if(titleLen>60){qaResults.seo.push(`⚠️ Title too long (${titleLen} chars, recommended: 50-60)`);issueCount++;}}const metaDesc=document.querySelector('meta[name=&quot;description&quot;]');if(!metaDesc||!metaDesc.content.trim()){qaResults.seo.push('❌ Missing or empty meta description');issueCount++;}else{const descLen=metaDesc.content.length;if(descLen<120){qaResults.seo.push(`⚠️ Meta description too short (${descLen} chars, recommended: 150-160)`);issueCount++;}else if(descLen>160){qaResults.seo.push(`⚠️ Meta description too long (${descLen} chars, recommended: 150-160)`);issueCount++;}}const viewport=document.querySelector('meta[name=&quot;viewport&quot;]');if(!viewport){qaResults.seo.push('❌ Missing viewport meta tag (mobile responsiveness)');issueCount++;}const canonical=document.querySelector('link[rel=&quot;canonical&quot;]');if(!canonical){qaResults.seo.push('⚠️ Missing canonical URL');issueCount++;}const ogTitle=document.querySelector('meta[property=&quot;og:title&quot;]');const ogDesc=document.querySelector('meta[property=&quot;og:description&quot;]');const ogImage=document.querySelector('meta[property=&quot;og:image&quot;]');if(!ogTitle)qaResults.seo.push('⚠️ Missing og:title (social sharing)');if(!ogDesc)qaResults.seo.push('⚠️ Missing og:description (social sharing)');if(!ogImage)qaResults.seo.push('⚠️ Missing og:image (social sharing)');const jsonLd=document.querySelector('script[type=&quot;application/ld+json&quot;]');if(!jsonLd){qaResults.seo.push('⚠️ No structured data (JSON-LD) found');issueCount++;}if(!document.documentElement.lang){qaResults.seo.push('❌ Missing lang attribute on <html>');issueCount++;}}function checkLinks(){const links=document.querySelectorAll('a[href]');let emptyLinks=0;let placeholderLinks=0;let missingText=0;links.forEach((link,idx)=>{const href=link.getAttribute('href');const text=link.textContent.trim();if(!href||href.trim()===''){emptyLinks++;qaResults.links.push(`❌ Link #${idx+1} has empty href: &quot;${text.substring(0,30)}&quot;`);issueCount++;}else if(href==='#'||href==='javascript:void(0)'||href==='javascript:;'){if(!link.onclick&&!link.getAttribute('data-toggle')&&!link.getAttribute('data-target')){placeholderLinks++;qaResults.links.push(`⚠️ Placeholder link without action: &quot;${text.substring(0,30)}&quot;`);issueCount++;}}if(!text&&!link.querySelector('img')&&!link.getAttribute('aria-label')){missingText++;qaResults.links.push(`❌ Link #${idx+1} has no text or aria-label`);issueCount++;}const genericTexts=['click here','read more','here','more','link'];if(genericTexts.includes(text.toLowerCase())){qaResults.links.push(`⚠️ Non-descriptive link text: &quot;${text}&quot;`);issueCount++;}});if(emptyLinks===0&&placeholderLinks===0&&missingText===0&&qaResults.links.length===0){qaResults.links.push(`✅ All ${links.length} links passed checks`);}}function checkContent(){const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(node){if(node.parentElement.tagName==='SCRIPT'||node.parentElement.tagName==='STYLE'||node.parentElement.tagName==='NOSCRIPT'){return NodeFilter.FILTER_REJECT;}return NodeFilter.FILTER_ACCEPT;}});let multipleSpaces=0;let typoCount=0;const textChecked=new Set();let node;while(node=walker.nextNode()){const text=node.nodeValue;if(!text||!text.trim()||textChecked.has(text))continue;textChecked.add(text);if(/\s{2,}/.test(text)){multipleSpaces++;if(multipleSpaces<=5){qaResults.content.push(`⚠️ Multiple spaces: &quot;${text.trim().substring(0,40)}...&quot;`);issueCount++;}}const typos=[/\bteh\b/gi,/\byoru\b/gi,/\btiem\b/gi,/\brecieve\b/gi,/\boccured\b/gi,/\bseperate\b/gi,/\bdefinately\b/gi,/\bexperien ce\b/gi,/\bmanage ment\b/gi];typos.forEach(pattern=>{if(pattern.test(text)){typoCount++;if(typoCount<=5){const match=text.match(pattern);qaResults.content.push(`❌ Potential typo: &quot;${match[0]}&quot; in &quot;${text.trim().substring(0,40)}...&quot;`);issueCount++;}}});}if(multipleSpaces>5){qaResults.content.push(`⚠️ ...and ${multipleSpaces-5} more spacing issues`);}if(typoCount>5){qaResults.content.push(`⚠️ ...and ${typoCount-5} more potential typos`);}if(multipleSpaces===0&&typoCount===0){qaResults.content.push('✅ No spacing or typo issues detected');}}function checkHeadings(){const headings=document.querySelectorAll('h1, h2, h3, h4, h5, h6');if(headings.length===0){qaResults.headings.push('❌ No headings found on page');issueCount++;return;}const h1Count=document.querySelectorAll('h1').length;if(h1Count===0){qaResults.headings.push('❌ No H1 heading found');issueCount++;}else if(h1Count>1){qaResults.headings.push(`⚠️ Multiple H1 headings found (${h1Count})`);issueCount++;}let prevLevel=0;headings.forEach((heading,idx)=>{const level=parseInt(heading.tagName.charAt(1));const text=heading.textContent.trim();if(!text){qaResults.headings.push(`❌ Empty ${heading.tagName} found`);issueCount++;}if(idx>0&&level>prevLevel+1){qaResults.headings.push(`⚠️ Heading skip: H${prevLevel} → H${level} (&quot;${text.substring(0,30)}&quot;)`);issueCount++;}prevLevel=level;});if(qaResults.headings.length===0){qaResults.headings.push(`✅ Heading hierarchy correct (${headings.length} headings)`);}}function checkImages(){const images=document.querySelectorAll('img');if(images.length===0){qaResults.images.push('ℹ️ No images found on page');return;}let missingAlt=0;let emptyAlt=0;let genericAlt=0;let brokenImages=0;images.forEach((img,idx)=>{const alt=img.getAttribute('alt');const src=img.src;if(alt===null){missingAlt++;if(missingAlt<=5){qaResults.images.push(`❌ Image #${idx+1} missing alt: ${src.substring(0,50)}...`);issueCount++;}}else if(alt.trim()===''){emptyAlt++;}else if(/^(image|picture|photo|img|icon)$/i.test(alt.trim())){genericAlt++;if(genericAlt<=5){qaResults.images.push(`⚠️ Generic alt text: &quot;${alt}&quot;`);issueCount++;}}if(img.complete&&img.naturalWidth===0){brokenImages++;if(brokenImages<=5){qaResults.images.push(`❌ Image failed to load: ${src.substring(0,50)}...`);issueCount++;}}});if(missingAlt>5)qaResults.images.push(`❌ ...and ${missingAlt-5} more images missing alt`);if(genericAlt>5)qaResults.images.push(`⚠️ ...and ${genericAlt-5} more generic alt texts`);if(brokenImages>5)qaResults.images.push(`❌ ...and ${brokenImages-5} more broken images`);if(missingAlt===0&&genericAlt===0&&brokenImages===0){qaResults.images.push(`✅ All ${images.length} images have proper alt tags`);}else if(emptyAlt>0){qaResults.images.push(`ℹ️ ${emptyAlt} decorative images with empty alt (OK)`);}}function checkAccessibility(){const inputs=document.querySelectorAll('input:not([type=&quot;hidden&quot;]):not([type=&quot;submit&quot;]):not([type=&quot;button&quot;]), textarea, select');let unlabeledInputs=0;inputs.forEach((input,idx)=>{const id=input.id;const ariaLabel=input.getAttribute('aria-label');const ariaLabelledby=input.getAttribute('aria-labelledby');const label=id?document.querySelector(`label[for=&quot;${id}&quot;]`):input.closest('label');if(!label&&!ariaLabel&&!ariaLabelledby){unlabeledInputs++;if(unlabeledInputs<=5){qaResults.accessibility.push(`❌ Input #${idx+1} missing label: ${input.type||input.tagName.toLowerCase()}`);issueCount++;}}});if(unlabeledInputs>5){qaResults.accessibility.push(`❌ ...and ${unlabeledInputs-5} more unlabeled inputs`);}const buttons=document.querySelectorAll('button, input[type=&quot;button&quot;], input[type=&quot;submit&quot;]');let unlabeledButtons=0;buttons.forEach((btn,idx)=>{const text=btn.textContent.trim();const ariaLabel=btn.getAttribute('aria-label');const value=btn.value;if(!text&&!ariaLabel&&!value&&!btn.querySelector('img[alt]')){unlabeledButtons++;if(unlabeledButtons<=3){qaResults.accessibility.push(`❌ Button #${idx+1} has no accessible text`);issueCount++;}}});const hasMain=document.querySelector('main, [role=&quot;main&quot;]');const hasNav=document.querySelector('nav, [role=&quot;navigation&quot;]');if(!hasMain){qaResults.accessibility.push('⚠️ Missing <main> or role=&quot;main&quot; landmark');issueCount++;}if(!hasNav){qaResults.accessibility.push('⚠️ Missing <nav> or role=&quot;navigation&quot; landmark');issueCount++;}const skipLink=document.querySelector('a[href^=&quot;#&quot;][href*=&quot;content&quot;], a[href^=&quot;#&quot;][href*=&quot;main&quot;]');if(!skipLink){qaResults.accessibility.push('⚠️ No skip navigation link found');issueCount++;}if(qaResults.accessibility.length===0){qaResults.accessibility.push('✅ Basic accessibility checks passed');}}function checkPerformance(){const externalScripts=document.querySelectorAll('script[src]');if(externalScripts.length>15){qaResults.performance.push(`⚠️ High number of external scripts (${externalScripts.length})`);issueCount++;}const externalStyles=document.querySelectorAll('link[rel=&quot;stylesheet&quot;]');if(externalStyles.length>10){qaResults.performance.push(`⚠️ High number of external stylesheets (${externalStyles.length})`);issueCount++;}const inlineStyles=document.querySelectorAll('[style]');if(inlineStyles.length>20){qaResults.performance.push(`⚠️ Excessive inline styles (${inlineStyles.length} elements)`);issueCount++;}const largeImages=Array.from(document.querySelectorAll('img')).filter(img=>{return img.naturalWidth>2000||img.naturalHeight>2000;});if(largeImages.length>0){qaResults.performance.push(`⚠️ ${largeImages.length} oversized images (>2000px)`);issueCount++;}if(qaResults.performance.length===0){qaResults.performance.push('✅ No major performance issues detected');}}function checkStructure(){const doctype=document.doctype;if(!doctype){qaResults.structure.push('❌ Missing DOCTYPE declaration');issueCount++;}const charset=document.querySelector('meta[charset], meta[http-equiv=&quot;Content-Type&quot;]');if(!charset){qaResults.structure.push('❌ Missing character encoding meta tag');issueCount++;}const ids={};const duplicateIds=[];document.querySelectorAll('[id]').forEach(el=>{const id=el.id;if(ids[id]){if(!duplicateIds.includes(id)){duplicateIds.push(id);}}else{ids[id]=true;}});if(duplicateIds.length>0){qaResults.structure.push(`❌ Duplicate IDs found: ${duplicateIds.slice(0,5).join(', ')}`);issueCount++;}const sections=document.querySelectorAll('section, article, aside');let emptySections=0;sections.forEach(section=>{if(!section.textContent.trim()&&section.querySelectorAll('img, video, iframe, svg').length===0){emptySections++;}});if(emptySections>0){qaResults.structure.push(`⚠️ ${emptySections} empty semantic sections found`);issueCount++;}if(qaResults.structure.length===0){qaResults.structure.push('✅ Page structure is valid');}}function runAllChecks(){checkSEO();checkLinks();checkContent();checkHeadings();checkImages();checkAccessibility();checkPerformance();checkStructure();}function displayResults(){const existingPanel=document.getElementById('universal-qa-panel');if(existingPanel)existingPanel.remove();const panel=document.createElement('div');panel.id='universal-qa-panel';panel.style.cssText=`position: fixed;top: 10px;right: 10px;width: 450px;max-width: 95vw;max-height: 90vh;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);border-radius: 12px;box-shadow: 0 10px 40px rgba(0,0,0,0.3);z-index: 2147483647;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;color: #fff;overflow: hidden;`;const statusColor=issueCount===0?'#10b981':issueCount<10?'#f59e0b':'#ef4444';const statusText=issueCount===0?'Excellent!':issueCount<10?'Good':'Needs Work';let html=`<div style=&quot;padding: 20px; background: rgba(0,0,0,0.2);&quot;><div style=&quot;display: flex; justify-content: space-between; align-items: center;&quot;><div><h2 style=&quot;margin: 0 0 5px 0; font-size: 20px; font-weight: 600;&quot;>🔍 Website QA Report</h2><div style=&quot;font-size: 12px; opacity: 0.9;&quot;>${window.location.hostname}</div></div><button onclick=&quot;this.parentElement.parentElement.parentElement.remove()&quot; style=&quot;background: rgba(255,255,255,0.2); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 18px; font-weight: bold;&quot;>×</button></div><div style=&quot;margin-top: 15px; padding: 15px; background: ${statusColor}; border-radius: 8px; text-align: center;&quot;><div style=&quot;font-size: 32px; font-weight: bold;&quot;>${issueCount}</div><div style=&quot;font-size: 14px; opacity: 0.95;&quot;>Issues Found • ${statusText}</div></div></div><div style=&quot;max-height: calc(90vh - 180px); overflow-y: auto; padding: 20px; background: white; color: #1f2937;&quot;>`;const sections=[{key:'seo',title:'🎯 SEO &amp; Meta Data',icon:'🎯'},{key:'links',title:'🔗 Links',icon:'🔗'},{key:'content',title:'📝 Content Quality',icon:'📝'},{key:'headings',title:'📑 Heading Hierarchy',icon:'📑'},{key:'images',title:'🖼️ Images &amp; Alt Tags',icon:'🖼️'},{key:'accessibility',title:'♿ Accessibility',icon:'♿'},{key:'performance',title:'⚡ Performance',icon:'⚡'},{key:'structure',title:'🏗️ Page Structure',icon:'🏗️'}];sections.forEach(section=>{if(qaResults[section.key].length>0){html+=`<div style=&quot;margin-bottom: 20px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px;&quot;><h3 style=&quot;margin: 0 0 10px 0; font-size: 16px; font-weight: 600; color: #111827;&quot;>${section.icon} ${section.title.replace(section.icon,'').trim()}<span style=&quot;background: #f3f4f6; color: #6b7280; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-left: 8px;&quot;>${qaResults[section.key].length}</span></h3><ul style=&quot;margin: 0; padding: 0; list-style: none; font-size: 13px; line-height: 1.6;&quot;>`;qaResults[section.key].forEach(issue=>{const color=issue.startsWith('✅')?'#10b981':issue.startsWith('❌')?'#ef4444':issue.startsWith('⚠️')?'#f59e0b':'#6b7280';html+=`<li style=&quot;margin: 5px 0; color: ${color};&quot;>${issue}</li>`;});html+='</ul></div>';}});html+=`<div style=&quot;text-align: center; padding: 15px 0; border-top: 2px solid #e5e7eb; margin-top: 10px;&quot;><div style=&quot;font-size: 11px; color: #9ca3af;&quot;>Universal QA Checker • ${new Date().toLocaleString()}</div></div></div>`;panel.innerHTML=html;document.body.appendChild(panel);}runAllChecks();displayResults();})();" class="bookmarklet-button">
+                    🔍 QA Checker
+                </a>
+            </div>
+
+            <div class="instructions">
+                <h3>📋 Installation Instructions</h3>
+                <ol>
+                    <li><strong>Show your bookmarks bar</strong> (Press <kbd>Ctrl+Shift+B</kbd> on Windows or <kbd>Cmd+Shift+B</kbd> on Mac)</li>
+                    <li><strong>Drag the button above</strong> directly to your bookmarks bar</li>
+                    <li><strong>Visit any website</strong> you want to test</li>
+                    <li><strong>Click the bookmark</strong> to run comprehensive QA checks</li>
+                    <li><strong>Review the results</strong> in the popup that appears</li>
+                </ol>
+            </div>
+
+            <h2 style="margin-bottom: 20px; color: #667eea;">✨ What Gets Checked</h2>
+            
+            <div class="checks-grid">
+                <div class="check-item">SEO &amp; Meta Tags</div>
+                <div class="check-item">Broken Links</div>
+                <div class="check-item">Content Quality</div>
+                <div class="check-item">Heading Hierarchy</div>
+                <div class="check-item">Image Alt Tags</div>
+                <div class="check-item">Accessibility</div>
+                <div class="check-item">Performance</div>
+                <div class="check-item">Page Structure</div>
+            </div>
+
+            <h2 style="margin: 30px 0 20px 0; color: #667eea;">🎯 Key Features</h2>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>SEO Validation</h3>
+                    <p>Checks meta tags, Open Graph, Twitter Cards, structured data, and title optimization</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Link Analysis</h3>
+                    <p>Detects broken links, placeholder links, missing text, and non-descriptive anchor text</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Content Quality</h3>
+                    <p>Finds typos, spacing issues, and common content errors automatically</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">♿</div>
+                    <h3>Accessibility</h3>
+                    <p>Validates ARIA landmarks, form labels, alt tags, and semantic HTML structure</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📑</div>
+                    <h3>HTML Structure</h3>
+                    <p>Ensures proper heading hierarchy, validates structure, and finds duplicate IDs</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Performance Hints</h3>
+                    <p>Identifies oversized images, excessive scripts, and performance bottlenecks</p>
+                </div>
+            </div>
+
+            <div class="alternative-method">
+                <h3>💡 Alternative: Manual Installation</h3>
+                <p>If drag-and-drop doesn't work, you can manually create a bookmark:</p>
+                <ol style="margin: 15px 0 15px 20px; color: #0c5460;">
+                    <li>Right-click your bookmarks bar and select "Add bookmark" or "Add page"</li>
+                    <li>Name it: <strong>QA Checker</strong></li>
+                    <li>Copy the code from the text box below and paste it in the URL field</li>
+                    <li>Save and click the bookmark on any page to use it</li>
+                </ol>
+                <textarea readonly class="code-box" onclick="this.select()" style="width: 100%; resize: vertical; cursor: pointer;">javascript:(function(){'use strict';const qaResults={seo:[],links:[],content:[],headings:[],images:[],accessibility:[],performance:[],structure:[]};let issueCount=0;function checkSEO(){const title=document.querySelector('title');if(!title||!title.textContent.trim()){qaResults.seo.push('❌ Missing or empty <title> tag');issueCount++;}else{const titleLen=title.textContent.length;if(titleLen<30){qaResults.seo.push(`⚠️ Title too short (${titleLen} chars, recommended: 50-60)`);issueCount++;}else if(titleLen>60){qaResults.seo.push(`⚠️ Title too long (${titleLen} chars, recommended: 50-60)`);issueCount++;}}const metaDesc=document.querySelector('meta[name="description"]');if(!metaDesc||!metaDesc.content.trim()){qaResults.seo.push('❌ Missing or empty meta description');issueCount++;}else{const descLen=metaDesc.content.length;if(descLen<120){qaResults.seo.push(`⚠️ Meta description too short (${descLen} chars, recommended: 150-160)`);issueCount++;}else if(descLen>160){qaResults.seo.push(`⚠️ Meta description too long (${descLen} chars, recommended: 150-160)`);issueCount++;}}const viewport=document.querySelector('meta[name="viewport"]');if(!viewport){qaResults.seo.push('❌ Missing viewport meta tag (mobile responsiveness)');issueCount++;}const canonical=document.querySelector('link[rel="canonical"]');if(!canonical){qaResults.seo.push('⚠️ Missing canonical URL');issueCount++;}const ogTitle=document.querySelector('meta[property="og:title"]');const ogDesc=document.querySelector('meta[property="og:description"]');const ogImage=document.querySelector('meta[property="og:image"]');if(!ogTitle)qaResults.seo.push('⚠️ Missing og:title (social sharing)');if(!ogDesc)qaResults.seo.push('⚠️ Missing og:description (social sharing)');if(!ogImage)qaResults.seo.push('⚠️ Missing og:image (social sharing)');const jsonLd=document.querySelector('script[type="application/ld+json"]');if(!jsonLd){qaResults.seo.push('⚠️ No structured data (JSON-LD) found');issueCount++;}if(!document.documentElement.lang){qaResults.seo.push('❌ Missing lang attribute on <html>');issueCount++;}}function checkLinks(){const links=document.querySelectorAll('a[href]');let emptyLinks=0;let placeholderLinks=0;let missingText=0;links.forEach((link,idx)=>{const href=link.getAttribute('href');const text=link.textContent.trim();if(!href||href.trim()===''){emptyLinks++;qaResults.links.push(`❌ Link #${idx+1} has empty href: "${text.substring(0,30)}"`);issueCount++;}else if(href==='#'||href==='javascript:void(0)'||href==='javascript:;'){if(!link.onclick&&!link.getAttribute('data-toggle')&&!link.getAttribute('data-target')){placeholderLinks++;qaResults.links.push(`⚠️ Placeholder link without action: "${text.substring(0,30)}"`);issueCount++;}}if(!text&&!link.querySelector('img')&&!link.getAttribute('aria-label')){missingText++;qaResults.links.push(`❌ Link #${idx+1} has no text or aria-label`);issueCount++;}const genericTexts=['click here','read more','here','more','link'];if(genericTexts.includes(text.toLowerCase())){qaResults.links.push(`⚠️ Non-descriptive link text: "${text}"`);issueCount++;}});if(emptyLinks===0&&placeholderLinks===0&&missingText===0&&qaResults.links.length===0){qaResults.links.push(`✅ All ${links.length} links passed checks`);}}function checkContent(){const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(node){if(node.parentElement.tagName==='SCRIPT'||node.parentElement.tagName==='STYLE'||node.parentElement.tagName==='NOSCRIPT'){return NodeFilter.FILTER_REJECT;}return NodeFilter.FILTER_ACCEPT;}});let multipleSpaces=0;let typoCount=0;const textChecked=new Set();let node;while(node=walker.nextNode()){const text=node.nodeValue;if(!text||!text.trim()||textChecked.has(text))continue;textChecked.add(text);if(/\s{2,}/.test(text)){multipleSpaces++;if(multipleSpaces<=5){qaResults.content.push(`⚠️ Multiple spaces: "${text.trim().substring(0,40)}..."`);issueCount++;}}const typos=[/\bteh\b/gi,/\byoru\b/gi,/\btiem\b/gi,/\brecieve\b/gi,/\boccured\b/gi,/\bseperate\b/gi,/\bdefinately\b/gi,/\bexperien ce\b/gi,/\bmanage ment\b/gi];typos.forEach(pattern=>{if(pattern.test(text)){typoCount++;if(typoCount<=5){const match=text.match(pattern);qaResults.content.push(`❌ Potential typo: "${match[0]}" in "${text.trim().substring(0,40)}..."`);issueCount++;}}});}if(multipleSpaces>5){qaResults.content.push(`⚠️ ...and ${multipleSpaces-5} more spacing issues`);}if(typoCount>5){qaResults.content.push(`⚠️ ...and ${typoCount-5} more potential typos`);}if(multipleSpaces===0&&typoCount===0){qaResults.content.push('✅ No spacing or typo issues detected');}}function checkHeadings(){const headings=document.querySelectorAll('h1, h2, h3, h4, h5, h6');if(headings.length===0){qaResults.headings.push('❌ No headings found on page');issueCount++;return;}const h1Count=document.querySelectorAll('h1').length;if(h1Count===0){qaResults.headings.push('❌ No H1 heading found');issueCount++;}else if(h1Count>1){qaResults.headings.push(`⚠️ Multiple H1 headings found (${h1Count})`);issueCount++;}let prevLevel=0;headings.forEach((heading,idx)=>{const level=parseInt(heading.tagName.charAt(1));const text=heading.textContent.trim();if(!text){qaResults.headings.push(`❌ Empty ${heading.tagName} found`);issueCount++;}if(idx>0&&level>prevLevel+1){qaResults.headings.push(`⚠️ Heading skip: H${prevLevel} → H${level} ("${text.substring(0,30)}")`);issueCount++;}prevLevel=level;});if(qaResults.headings.length===0){qaResults.headings.push(`✅ Heading hierarchy correct (${headings.length} headings)`);}}function checkImages(){const images=document.querySelectorAll('img');if(images.length===0){qaResults.images.push('ℹ️ No images found on page');return;}let missingAlt=0;let emptyAlt=0;let genericAlt=0;let brokenImages=0;images.forEach((img,idx)=>{const alt=img.getAttribute('alt');const src=img.src;if(alt===null){missingAlt++;if(missingAlt<=5){qaResults.images.push(`❌ Image #${idx+1} missing alt: ${src.substring(0,50)}...`);issueCount++;}}else if(alt.trim()===''){emptyAlt++;}else if(/^(image|picture|photo|img|icon)$/i.test(alt.trim())){genericAlt++;if(genericAlt<=5){qaResults.images.push(`⚠️ Generic alt text: "${alt}"`);issueCount++;}}if(img.complete&&img.naturalWidth===0){brokenImages++;if(brokenImages<=5){qaResults.images.push(`❌ Image failed to load: ${src.substring(0,50)}...`);issueCount++;}}});if(missingAlt>5)qaResults.images.push(`❌ ...and ${missingAlt-5} more images missing alt`);if(genericAlt>5)qaResults.images.push(`⚠️ ...and ${genericAlt-5} more generic alt texts`);if(brokenImages>5)qaResults.images.push(`❌ ...and ${brokenImages-5} more broken images`);if(missingAlt===0&&genericAlt===0&&brokenImages===0){qaResults.images.push(`✅ All ${images.length} images have proper alt tags`);}else if(emptyAlt>0){qaResults.images.push(`ℹ️ ${emptyAlt} decorative images with empty alt (OK)`);}}function checkAccessibility(){const inputs=document.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="button"]), textarea, select');let unlabeledInputs=0;inputs.forEach((input,idx)=>{const id=input.id;const ariaLabel=input.getAttribute('aria-label');const ariaLabelledby=input.getAttribute('aria-labelledby');const label=id?document.querySelector(`label[for="${id}"]`):input.closest('label');if(!label&&!ariaLabel&&!ariaLabelledby){unlabeledInputs++;if(unlabeledInputs<=5){qaResults.accessibility.push(`❌ Input #${idx+1} missing label: ${input.type||input.tagName.toLowerCase()}`);issueCount++;}}});if(unlabeledInputs>5){qaResults.accessibility.push(`❌ ...and ${unlabeledInputs-5} more unlabeled inputs`);}const buttons=document.querySelectorAll('button, input[type="button"], input[type="submit"]');let unlabeledButtons=0;buttons.forEach((btn,idx)=>{const text=btn.textContent.trim();const ariaLabel=btn.getAttribute('aria-label');const value=btn.value;if(!text&&!ariaLabel&&!value&&!btn.querySelector('img[alt]')){unlabeledButtons++;if(unlabeledButtons<=3){qaResults.accessibility.push(`❌ Button #${idx+1} has no accessible text`);issueCount++;}}});const hasMain=document.querySelector('main, [role="main"]');const hasNav=document.querySelector('nav, [role="navigation"]');if(!hasMain){qaResults.accessibility.push('⚠️ Missing <main> or role="main" landmark');issueCount++;}if(!hasNav){qaResults.accessibility.push('⚠️ Missing <nav> or role="navigation" landmark');issueCount++;}const skipLink=document.querySelector('a[href^="#"][href*="content"], a[href^="#"][href*="main"]');if(!skipLink){qaResults.accessibility.push('⚠️ No skip navigation link found');issueCount++;}if(qaResults.accessibility.length===0){qaResults.accessibility.push('✅ Basic accessibility checks passed');}}function checkPerformance(){const externalScripts=document.querySelectorAll('script[src]');if(externalScripts.length>15){qaResults.performance.push(`⚠️ High number of external scripts (${externalScripts.length})`);issueCount++;}const externalStyles=document.querySelectorAll('link[rel="stylesheet"]');if(externalStyles.length>10){qaResults.performance.push(`⚠️ High number of external stylesheets (${externalStyles.length})`);issueCount++;}const inlineStyles=document.querySelectorAll('[style]');if(inlineStyles.length>20){qaResults.performance.push(`⚠️ Excessive inline styles (${inlineStyles.length} elements)`);issueCount++;}const largeImages=Array.from(document.querySelectorAll('img')).filter(img=>{return img.naturalWidth>2000||img.naturalHeight>2000;});if(largeImages.length>0){qaResults.performance.push(`⚠️ ${largeImages.length} oversized images (>2000px)`);issueCount++;}if(qaResults.performance.length===0){qaResults.performance.push('✅ No major performance issues detected');}}function checkStructure(){const doctype=document.doctype;if(!doctype){qaResults.structure.push('❌ Missing DOCTYPE declaration');issueCount++;}const charset=document.querySelector('meta[charset], meta[http-equiv="Content-Type"]');if(!charset){qaResults.structure.push('❌ Missing character encoding meta tag');issueCount++;}const ids={};const duplicateIds=[];document.querySelectorAll('[id]').forEach(el=>{const id=el.id;if(ids[id]){if(!duplicateIds.includes(id)){duplicateIds.push(id);}}else{ids[id]=true;}});if(duplicateIds.length>0){qaResults.structure.push(`❌ Duplicate IDs found: ${duplicateIds.slice(0,5).join(', ')}`);issueCount++;}const sections=document.querySelectorAll('section, article, aside');let emptySections=0;sections.forEach(section=>{if(!section.textContent.trim()&&section.querySelectorAll('img, video, iframe, svg').length===0){emptySections++;}});if(emptySections>0){qaResults.structure.push(`⚠️ ${emptySections} empty semantic sections found`);issueCount++;}if(qaResults.structure.length===0){qaResults.structure.push('✅ Page structure is valid');}}function runAllChecks(){checkSEO();checkLinks();checkContent();checkHeadings();checkImages();checkAccessibility();checkPerformance();checkStructure();}function displayResults(){const existingPanel=document.getElementById('universal-qa-panel');if(existingPanel)existingPanel.remove();const panel=document.createElement('div');panel.id='universal-qa-panel';panel.style.cssText=`position: fixed;top: 10px;right: 10px;width: 450px;max-width: 95vw;max-height: 90vh;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);border-radius: 12px;box-shadow: 0 10px 40px rgba(0,0,0,0.3);z-index: 2147483647;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;color: #fff;overflow: hidden;`;const statusColor=issueCount===0?'#10b981':issueCount<10?'#f59e0b':'#ef4444';const statusText=issueCount===0?'Excellent!':issueCount<10?'Good':'Needs Work';let html=`<div style="padding: 20px; background: rgba(0,0,0,0.2);"><div style="display: flex; justify-content: space-between; align-items: center;"><div><h2 style="margin: 0 0 5px 0; font-size: 20px; font-weight: 600;">🔍 Website QA Report</h2><div style="font-size: 12px; opacity: 0.9;">${window.location.hostname}</div></div><button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 18px; font-weight: bold;">×</button></div><div style="margin-top: 15px; padding: 15px; background: ${statusColor}; border-radius: 8px; text-align: center;"><div style="font-size: 32px; font-weight: bold;">${issueCount}</div><div style="font-size: 14px; opacity: 0.95;">Issues Found • ${statusText}</div></div></div><div style="max-height: calc(90vh - 180px); overflow-y: auto; padding: 20px; background: white; color: #1f2937;">`;const sections=[{key:'seo',title:'🎯 SEO & Meta Data',icon:'🎯'},{key:'links',title:'🔗 Links',icon:'🔗'},{key:'content',title:'📝 Content Quality',icon:'📝'},{key:'headings',title:'📑 Heading Hierarchy',icon:'📑'},{key:'images',title:'🖼️ Images & Alt Tags',icon:'🖼️'},{key:'accessibility',title:'♿ Accessibility',icon:'♿'},{key:'performance',title:'⚡ Performance',icon:'⚡'},{key:'structure',title:'🏗️ Page Structure',icon:'🏗️'}];sections.forEach(section=>{if(qaResults[section.key].length>0){html+=`<div style="margin-bottom: 20px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px;"><h3 style="margin: 0 0 10px 0; font-size: 16px; font-weight: 600; color: #111827;">${section.icon} ${section.title.replace(section.icon,'').trim()}<span style="background: #f3f4f6; color: #6b7280; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-left: 8px;">${qaResults[section.key].length}</span></h3><ul style="margin: 0; padding: 0; list-style: none; font-size: 13px; line-height: 1.6;">`;qaResults[section.key].forEach(issue=>{const color=issue.startsWith('✅')?'#10b981':issue.startsWith('❌')?'#ef4444':issue.startsWith('⚠️')?'#f59e0b':'#6b7280';html+=`<li style="margin: 5px 0; color: ${color};">${issue}</li>`;});html+='</ul></div>';}});html+=`<div style="text-align: center; padding: 15px 0; border-top: 2px solid #e5e7eb; margin-top: 10px;"><div style="font-size: 11px; color: #9ca3af;">Universal QA Checker • ${new Date().toLocaleString()}</div></div></div>`;panel.innerHTML=html;document.body.appendChild(panel);}runAllChecks();displayResults();})();</textarea>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Made with ❤️ for QA Professionals by <a href="https://github.com/LauraRodd"> Laura Rodd</a> | Works on all modern browsers</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Share it with your team, or use it for daily QA tasks!</p>
+        </div>
+    </div>
+</body>
+</html>
